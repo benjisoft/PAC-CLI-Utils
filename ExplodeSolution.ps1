@@ -12,14 +12,14 @@ if($check = "Y") {
 	Copy-Item -Path 'ExplodeSolution.ps1' -Destination '../ExplodeSolution.ps1'
 
 	Write-Host 'Exporting Unmanaged'
-	pac solution export --path './'+$solutionName+'.zip' --name $solutionName
+	pac solution export --path "./$solutionName.zip" --name $solutionName
 
 	Write-Host 'Exporting Managed'
-	pac solution export --path './'+$solutionName+'_managed.zip' --name $solutionName --managed
+	pac solution export --path "./$solutionName_managed.zip" --name $solutionName --managed
 
 
 	Write-Host 'Unpacking Unmanaged'
-	pac solution unpack --zipfile './'+$solutionName+'.zip' --packagetype 'both' -ad
+	pac solution unpack --zipfile "./$solutionName.zip" --packagetype 'both' -ad
 
 	Write-Host 'Recreating PowerShell scripts'
 	Move-Item -Path '../ExplodeSolution.ps1' -Destination './ExplodeSolution.ps1'
